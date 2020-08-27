@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome @User.Identity.Name.Split("@")[0]</h1>
+</div>
+@{
+    if (ViewBag.RoleName == "Super Admin")
+    {
+        <ul>
+            <li>
+                <a href="/Administration/UsersList" title="Users">Users</a>
+            </li>
+            <li>
+                <a href="/Administration/RolesList" title="Roles">Roles</a>
+            </li>
+        </ul>
+    }
+
+}

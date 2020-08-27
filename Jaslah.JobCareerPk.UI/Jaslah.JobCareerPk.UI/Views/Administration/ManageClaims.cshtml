@@ -1,0 +1,33 @@
+﻿@model UserClaimsViewModel
+@{
+    ViewData["Title"] = "Manage Claims";
+    IdentityUser user = (IdentityUser)ViewBag.User;
+}
+
+<h4>Claims of User @user.UserName</h4>
+<hr />
+<div class="row">
+    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    <form asp-action="ManageClaims">
+         <input hidden asp-for="@Model.UserId">
+
+        @for (int i = 0; i < Model.Claims.Count(); i++)
+        {
+
+            <div class="form-check m-1">
+                <input hidden asp-for="@Model.Claims[i].ClaimsType">
+                <input class="form-check-input" asp-for="@Model.Claims[i].IsSelected">
+                <label class="form-check-label" asp-for="@Model.Claims[i].IsSelected">
+                    @Model.Claims[i].ClaimsType
+                </label>
+            </div>
+
+        }
+        <hr />
+        <input type="submit" class="btn btn-primary" value="Update" />
+        <a class="btn btn-default"
+           asp-controller="Administration"
+           asp-action="EditUser"
+           asp-route-id="@user.Id">Cancel</a>
+    </form>
+</div>

@@ -1,0 +1,142 @@
+﻿@model SignUpViewModel
+@using (Html.BeginForm("SignUp", "UserAccount", FormMethod.Post, new { @id="SignUpForm", @onsubmit= "validateAndSubmit(event)" }))
+{
+    <section>
+        <div class="container">
+            @Html.ValidationSummary()
+            <div class="row justify-content-center">
+
+                <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                    <div class="row">
+                        <div class="col text-center">
+                            <h1>Register</h1>
+                            <p class="text-h3">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia. </p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-4">
+                        <div class="col">
+                            @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control", placeholder = "Email Address" })
+                            @Html.ValidationMessageFor(model => model.EmailAddress,null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-4">
+                        <div class="col">
+                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", placeholder = "Password", type="password" })
+                            @Html.ValidationMessageFor(model => model.Password, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="col">
+                            @Html.TextBoxFor(model => model.ConfirmPassword, new { @class = "form-control", placeholder = "Confirm Password", type = "password" })
+                            @Html.ValidationMessageFor(model => model.ConfirmPassword, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-4">
+                        <div class="col">
+                            @Html.TextBoxFor(model => model.ContactNumber, new { @class = "form-control", placeholder = "Contact No" })
+                            @Html.ValidationMessageFor(model => model.ContactNumber, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-4">
+                        <div class="col">
+                            @Html.TextBoxFor(model => model.Address, new { @class = "form-control", placeholder = "Address" })
+                        </div>
+                    </div>
+                    <div class="row align-items-center">
+                        <div class="col mt-4">
+                            @Html.DropDownList("IndustryTypeId", new SelectList(Model.IndustryTypes, "Id", "Type"), "Select Industry", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.IndustryTypeId, null, new { @class = "text-danger" })
+                        </div>
+                        <div class="col mt-4">
+                            @Html.DropDownList("RoleId", new SelectList(Model.UserRoles, "Id", "Name"), "Sign Up as ?", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.RoleId, null, new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    @* Employee Fields *@
+                    <div id="employeeSection" style="display:@(Model.RoleId == 1? "block": "none")">
+                        <div class="row align-items-center mt-4">
+                            <div class="col">
+                                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", placeholder = "First Name" })
+                                @Html.ValidationMessage("FirstName", null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row align-items-center mt-4">
+                            <div class="col">
+                                @Html.TextBoxFor(model => model.MiddleName, new { @class = "form-control", placeholder = "Middle Name" })
+                            </div>
+
+                        </div>
+                        <div class="row align-items-center mt-4">
+                            <div class="col">
+                                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", placeholder = "Last Name" })
+                                @Html.ValidationMessage("LastName", null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="row align-items-center mt-4">
+                            <div class="col">
+                                @Html.TextBoxFor(model => model.Age, new { @class = "form-control", type = "number", placeholder = "Age" })
+                            </div>
+                            <div class="col">
+                                @Html.TextBoxFor(model => model.LastDegree, new { @class = "form-control", placeholder = "Last Degree/Education" })
+                            </div>
+                        </div>
+                        <div class="row align-items-center mt-4">
+                            <div class="col">
+                                @Html.TextAreaFor(model => model.KeySkills, new { @class = "form-control", placeholder = "Explain your key skills here ..." })
+                                @Html.ValidationMessage("KeySkills", null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    @* Employer Fields *@
+                    <div id="employerSection" style="display:@(Model.RoleId == 2? "block": "none")">
+                        <div class="row align-items-center mt-4">
+                            <div class="col">
+                                @Html.TextBoxFor(model => model.EmployerName, new { @class = "form-control", placeholder = "Employer Name" })
+                                @Html.ValidationMessage("EmployerName", null, new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-start mt-4">
+                        <div class="col">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="checkbox" class="form-check-input">
+                                    I Read and Accept <a href="https://www.froala.com">Terms and Conditions</a>
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary mt-4" >Sign Up</button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+}
+
+
+<script src="~/js/SignUp.js"></script>
+<script>
+    
+    $(document).ready(function () {
+       
+        $('#RoleId').change(function (e) {
+            if (e.target.value === "1") {
+                $('#employeeSection').show();
+                $('#employerSection').hide();
+            }
+            else if (e.target.value === "2") {
+                $('#employeeSection').hide();
+                $('#employerSection').show();
+            }
+            else {
+                $('#employeeSection').hide();
+                $('#employerSection').hide();
+            }
+        });
+
+    })
+</script>

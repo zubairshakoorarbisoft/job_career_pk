@@ -1,0 +1,9 @@
+D:\zubair\DotNet\JobCareerPk\Jaslah.JobCareerPk.UI\Jaslah.JobCareerPk.DAL\bin\Debug\netstandard2.0\Jaslah.JobCareerPk.DAL.deps.json
+D:\zubair\DotNet\JobCareerPk\Jaslah.JobCareerPk.UI\Jaslah.JobCareerPk.DAL\bin\Debug\netstandard2.0\Jaslah.JobCareerPk.DAL.dll
+D:\zubair\DotNet\JobCareerPk\Jaslah.JobCareerPk.UI\Jaslah.JobCareerPk.DAL\bin\Debug\netstandard2.0\Jaslah.JobCareerPk.DAL.pdb
+D:\zubair\DotNet\JobCareerPk\Jaslah.JobCareerPk.UI\Jaslah.JobCareerPk.DAL\obj\Debug\netstandard2.0\Jaslah.JobCareerPk.DAL.csprojAssemblyReference.cache
+D:\zubair\DotNet\JobCareerPk\Jaslah.JobCareerPk.UI\Jaslah.JobCareerPk.DAL\obj\Debug\netstandard2.0\Jaslah.JobCareerPk.DAL.AssemblyInfoInputs.cache
+D:\zubair\DotNet\JobCareerPk\Jaslah.JobCareerPk.UI\Jaslah.JobCareerPk.DAL\obj\Debug\netstandard2.0\Jaslah.JobCareerPk.DAL.AssemblyInfo.cs
+D:\zubair\DotNet\JobCareerPk\Jaslah.JobCareerPk.UI\Jaslah.JobCareerPk.DAL\obj\Debug\netstandard2.0\Jaslah.JobCareerPk.DAL.csproj.CoreCompileInputs.cache
+D:\zubair\DotNet\JobCareerPk\Jaslah.JobCareerPk.UI\Jaslah.JobCareerPk.DAL\obj\Debug\netstandard2.0\Jaslah.JobCareerPk.DAL.dll
+D:\zubair\DotNet\JobCareerPk\Jaslah.JobCareerPk.UI\Jaslah.JobCareerPk.DAL\obj\Debug\netstandard2.0\Jaslah.JobCareerPk.DAL.pdb

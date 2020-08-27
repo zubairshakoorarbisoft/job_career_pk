@@ -1,0 +1,71 @@
+﻿@model EditRoleViewModel
+
+@{
+    ViewData["Title"] = "EditRole";
+}
+
+
+<div class="container">
+    <main role="main" class="pb-3">
+        <div class="row">
+            <div class="col-md-4">
+                <section>
+                    <form id="role" method="post" novalidate="novalidate">
+                        <h4>Edit Role</h4>
+                        <hr>
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            <label for="Id">Id</label>
+                            <input class="form-control" asp-for="Id" disabled>
+                            <span class="text-danger field-validation-valid" asp-validation-for="Id"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Name">Role Name</label>
+                            <input class="form-control" asp-for="Name">
+                            <span class="text-danger field-validation-valid" asp-validation-for="Name"></span>
+                        </div>
+                        <div class="form-group">
+                            <button id="login-submit" type="submit" class="btn btn-primary">Update Role</button>
+                            <a class="btn btn-default" asp-action="RolesList" asp-controller="Administration">Cancel</a>
+                        </div>
+                    </form>
+                </section>
+            </div>
+            <div class="col-md-6 col-md-offset-2">
+                <section>
+                    <h4>Users of Role @Model.Name</h4><a 
+                                                         asp-controller="Administration"
+                                                         asp-action="AddEditUsersInRole"
+                                                         asp-route-roleId="@Model.Id"
+                                                         class="btn btn-primary btn-sm">Add or Remove Users</a>
+                    <hr>
+                    <div>
+                        <table class="table table-responsive-sm table-bordered">
+                            <tr>
+                                <th>User Name</th>
+                            </tr>
+                            @if (Model.Users != null)
+                            {
+                                @foreach (var item in Model.Users)
+                                {
+                                    <tr>
+                                        <td>@item</td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td class="text-center">No user in this role</td>
+                                </tr>
+                            }
+                        </table>
+                        
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+    </main>
+</div>

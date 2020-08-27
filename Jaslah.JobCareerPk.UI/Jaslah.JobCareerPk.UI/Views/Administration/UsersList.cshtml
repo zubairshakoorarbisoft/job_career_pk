@@ -1,0 +1,55 @@
+﻿@model IEnumerable<IdentityUser>
+@{
+    ViewData["Title"] = "Roles List";
+}
+
+<h2>Users</h2>
+<div class="row">
+    <a class="btn btn-primary" asp-area="Identity" asp-page="/Account/Register">Add User</a>
+</div>
+<br />
+<div class="row text-center">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <span class="alert alert-success">@TempData["SuccessMessage"]</span>
+    }
+</div>
+<div class="row">
+
+    <div class="col-md-12">
+        <table class="table table-responsive-lg" id="users">
+            <thead>
+                <tr>
+                    <td>User ID</td>
+                    <th>User Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (IdentityUser item in Model)
+                {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.UserName</td>
+                    <td>
+                        <a class="btn btn-sm btn-primary"
+                           asp-controller="Administration"
+                           asp-action="EditUser"
+                           asp-route-id="@item.Id">Edit</a>
+                    </td>
+                </tr>
+
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('#users').DataTable();
+    });
+</script>

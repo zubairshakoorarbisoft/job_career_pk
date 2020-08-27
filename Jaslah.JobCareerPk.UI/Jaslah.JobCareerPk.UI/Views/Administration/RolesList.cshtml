@@ -1,0 +1,70 @@
+﻿@model IEnumerable<IdentityRole>
+@{
+    ViewData["Title"] = "Roles List";
+}
+
+<h1>Roles</h1>
+<div class="row">
+    <a asp-action="CreateRole" class="btn btn-primary">Add New Role</a>
+</div>
+<br />
+<div class="row text-center">
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <span class="alert alert-success">@TempData["SuccessMessage"]</span>
+    }
+</div>
+<div class="row">
+
+    <div class="col-md-12">
+        <table class="table table-responsive-lg" id="roles">
+            <thead>
+                <tr>
+                    <th>Role ID</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model.Any())
+                {
+                    foreach (IdentityRole item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                            <td>
+                                <a class="btn btn-sm btn-primary"
+                                   asp-controller="Administration"
+                                   asp-action="EditRole"
+                                   asp-route-id="@item.Id">Edit</a>
+                                <a class="btn btn-sm btn-primary"
+                                   asp-controller="Administration"
+                                   asp-action="DeleteRole"
+                                   asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" class="text-center">
+                            There is not role yet, Create Your First User Role
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+        $('#roles').DataTable();
+    });
+</script>
